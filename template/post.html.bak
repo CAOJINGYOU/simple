@@ -35,26 +35,6 @@
 </div>
 <br>
 <br>
-<div class="duoshuo-div" id="duoshuo-div">
-<!-- 多说评论框 start 
-<div class="ds-thread" Id="data-duoshuo" data-thread-key="ID" data-title="标题" data-url="http://caojingyou.github.io"></div> -->
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"yhcao"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-</div>
-<br>
-<br>
     <div id="disqus_thread"></div>
 	<div class="footer">
 		<p>© Copyright 2014 by isnowfy, Designed by isnowfy and yhcao</p>
@@ -76,9 +56,6 @@ var duoshuoQuery = {short_name:"yhcao"};
         <a href="{{path}}">{{title}}</a>
     </li>
     {{/pages}}
-</script>
-<script id="duoshuo-sc" type="text/mustache">
-<div class="ds-thread" Id="data-duoshuo" data-thread-key="{{key}}" data-title="{{title}}" data-url="http://caojingyou.github.io/{{url}}"></div>
 </script>
 <script>
 $(document).ready(function() {
@@ -107,9 +84,6 @@ $(document).ready(function() {
             var contentTemplate = Hogan.compile($("#content").html());
             var contentHtml = contentTemplate.render({"title": post.title, "tags": tags, "date": post.date});
             $("#main").prepend(contentHtml);
-			var duoshuoTemplate = Hogan.compile($("#duoshuo-sc").html());
-            var duoshuoHtml = duoshuoTemplate.render({"key": path, "title": post.title, "url": path});
-            $("#duoshuo-div").prepend(duoshuoHtml);
             if (data.disqus_shortname.length > 0) {
                 var disqus_shortname = data.disqus_shortname;
                 (function() {
@@ -118,9 +92,6 @@ $(document).ready(function() {
                     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
                 })();
             }
-			<!--$("#data-duoshuo").attr("data-title",post.title);
-			$("#data-duoshuo").attr("data-url",window.location.href);
-			$("#data-duoshuo").attr("data-thread-key",post.title+"--"+window.location.href);-->
         }
     });
 });
