@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="Keywords" content="blog"/>
     <meta name="Description" content="blog"/>
-    <title>Simple</title>
+    <title id="title-d"></title>
     <link rel="shortcut icon" href="/static/favicon.png"/>
     <link rel="stylesheet" type="text/css" href="/main.css" />
 </head>
@@ -80,6 +80,9 @@ var duoshuoQuery = {short_name:"yhcao"};
 <script id="duoshuo-sc" type="text/mustache">
 <div class="ds-thread" Id="data-duoshuo" data-thread-key="{{key}}" data-title="{{title}}" data-url="http://caojingyou.github.io/{{url}}"></div>
 </script>
+<script id="title-sc" type="text/mustache">
+{{title}}
+</script>
 <script>
 $(document).ready(function() {
     $.ajax({
@@ -110,6 +113,9 @@ $(document).ready(function() {
 			var duoshuoTemplate = Hogan.compile($("#duoshuo-sc").html());
 			var duoshuoHtml = duoshuoTemplate.render({"key": path, "title": post.title, "url": path});
 			$("#duoshuo-div").prepend(duoshuoHtml);
+			var titleTemplate = Hogan.compile($("#title-sc").html());
+			var titleHtml = titleTemplate.render({"title": post.title});
+			$("#title-d").prepend(titleHtml);
             if (data.disqus_shortname.length > 0) {
                 var disqus_shortname = data.disqus_shortname;
                 (function() {
